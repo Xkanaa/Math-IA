@@ -1,0 +1,32 @@
+import pandas as pd     #framework module for other statistic modules
+#import pingouin as pg       #t test module, won't show P values for some ungodly reason
+from statsmodels.stats.weightstats import ttest_ind     #t test module
+
+ 
+df = pd.read_csv('C:/Users/ALECB/OneDrive/Documents/EHvsPR.csv')         #reads data from the sheet at the path intro a dataframe
+
+#print(df.head())           #gives first 5 values in table
+
+#print(df.to_string())       #prints dataframe
+
+
+#Subsetting data
+eh = df.query('room_type == "EH"')['price']          #Entire home data
+
+pr = df.query('room_type == "PR"')['price']             #Private room data
+
+#print(df.groupby('room_type').describe())           #summary statistics
+
+#l_pr =   len(pr)               #Range of PR
+#print(l_pr)
+#l_eh =    len(eh)                 #Range of EH
+#print(l_eh)
+
+#print("penguin")
+#res = pg.ttest(pr, eh)        #eh is x, pr is y, Alternative: mean of x is greater than mean of y. Correction for welch because set size is different.
+#print(res)
+
+res = ttest_ind(eh, pr, alternative='larger', usevar='unequal', weights=(None, None), value=0)
+print("Independent One-Tailed 2 Tample T Test")
+print("tstat:"+str(res[0]), "\nP-value:" + str(res[1]), "\ndf:"+str(res[2]))
+print("")
