@@ -1,0 +1,33 @@
+import math #for pi
+import pandas as pd     #dataframe
+
+def hav(lat1,lon1):
+    R = 6371e3 #radius of earth in meters
+    lat2 = 52.367600     #city center lat here
+    lon2 = 4.904100    #city center lon here
+
+    lat_rad1 = lat1 * math.pi/180 # putting everything into radians
+    lat_rad2 = lat2 * math.pi/180
+    lat_change = (lat2-lat1) * math.pi/180
+    lon_change = (lon2-lon1) * math.pi/180
+
+    a = math.sin(lat_change/2) * math.sin(lat_change/2) + math.cos(lat_rad1) * math.cos(lat_rad2) * math.sin(lon_change/2) * math.sin(lon_change/2)
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+
+    d = R * c #distance in meters
+    return(d)
+
+df = pd.read_csv('C:/Users/ALECB/OneDrive/Documents/Math IA Data/AmsterdamLL.csv')         #reads data from the sheet at the path intro a dataframe
+
+#print(df.head())           #gives first 5 values in table
+
+#print(df.to_string())       #prints dataframe
+
+print(len(df.index))
+
+dists = []
+for n in range(len(df.index)):
+    dists.append(hav(df.iloc[n,0],df.iloc[n,1]))
+
+dfex = pd.DataFrame(dists)
+dfex.to_excel('C:/Users/ALECB/OneDrive/Documents/Math IA Data/output.xlsx')  
