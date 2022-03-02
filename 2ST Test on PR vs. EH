@@ -2,8 +2,8 @@ import pandas as pd     #framework module for other statistic modules
 #import pingouin as pg       #t test module, won't show P values for some ungodly reason
 from statsmodels.stats.weightstats import ttest_ind     #t test module
 
- 
-df = pd.read_csv('C:/Users/ALECB/OneDrive/Documents/Amsterdam PRvEH.csv')         #reads data from the sheet at the path intro a dataframe
+
+df = pd.read_csv('C:/Users/ALECB/OneDrive/Documents/Math IA Data/PRvEH CSV/City name here.csv')         #reads data from the sheet at the path intro a dataframe
 
 #print(df.head())           #gives first 5 values in table
 
