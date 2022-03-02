@@ -3,7 +3,7 @@ import pandas as pd     #framework module for other statistic modules
 from statsmodels.stats.weightstats import ttest_ind     #t test module
 
  
-df = pd.read_csv('C:/Users/ALECB/OneDrive/Documents/EHvsPR.csv')         #reads data from the sheet at the path intro a dataframe
+df = pd.read_csv('C:/Users/ALECB/OneDrive/Documents/Amsterdam PRvEH.csv')         #reads data from the sheet at the path intro a dataframe
 
 #print(df.head())           #gives first 5 values in table
 
@@ -27,6 +27,6 @@ pr = df.query('room_type == "PR"')['price']             #Private room data
 #print(res)
 
 res = ttest_ind(eh, pr, alternative='larger', usevar='unequal', weights=(None, None), value=0)
-print("Independent One-Tailed 2 Tample T Test")
+print("Independent One-Tailed 2 Sample T Test")
 print("tstat:"+str(res[0]), "\nP-value:" + str(res[1]), "\ndf:"+str(res[2]))
 print("")
