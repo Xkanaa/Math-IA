@@ -1,0 +1,8 @@
+import pandas as pd
+
+df = pd.read_csv('C:/Users/ALECB/OneDrive/Documents/Math IA Data/Ams CDvP.csv')
+x = df.corr(method="spearman")
+y = df.corr(method="pearson")
+print(x)
+print(y)
+
