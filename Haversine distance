@@ -1,10 +1,14 @@
 import math #for pi
 import pandas as pd     #dataframe
 
+Am = [52.367600, 4.904100]          #Amsterdam center
+As = [35.595100, -82.551500]        #Asheville center
+Ba = [13.756300, 100.501800]        #Bangkok center
+
 def hav(lat1,lon1):
     R = 6371e3 #radius of earth in meters
-    lat2 = 52.367600     #city center lat here
-    lon2 = 4.904100    #city center lon here
+    lat2 = Ba[0]     #city center lat here
+    lon2 = Ba[1]    #city center lon here
 
     lat_rad1 = lat1 * math.pi/180 # putting everything into radians
     lat_rad2 = lat2 * math.pi/180
@@ -17,7 +21,7 @@ def hav(lat1,lon1):
     d = R * c #distance in meters
     return(d)
 
-df = pd.read_csv('C:/Users/ALECB/OneDrive/Documents/Math IA Data/AmsterdamLL.csv')         #reads data from the sheet at the path intro a dataframe
+df = pd.read_csv('C:/Users/ALECB/OneDrive/Documents/Math IA Data/CDvP/L&L/BaLL.csv')         #reads data from the sheet at the path intro a dataframe
 
 #print(df.head())           #gives first 5 values in table
 
